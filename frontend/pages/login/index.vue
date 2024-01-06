@@ -46,7 +46,7 @@ function onSignUp(): void {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .login-container {
   max-width: 40vw;
   flex-grow: 1;

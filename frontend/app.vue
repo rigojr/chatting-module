@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .viewport {
     display: flex;
     justify-content: center;

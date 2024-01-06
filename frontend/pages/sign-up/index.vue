@@ -41,7 +41,7 @@ function onBack(): void {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .signup-container {
   max-width: 50vw;
   flex-grow: 1;

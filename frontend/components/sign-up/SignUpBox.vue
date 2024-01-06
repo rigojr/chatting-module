@@ -47,7 +47,6 @@ function onInputChanged(e: Event, key: keyof SingUpFormData): void {
   const target = e.target;
 
   if (!isHTMLInputElement(target)) {
-    // TODO: check the nullish form data if there is time.
     // TODO: add error handling here.
 
     return;
@@ -151,22 +150,22 @@ function onSubmit(): void {
   </form>
 </template>
 
-<style lang="scss">
-  @use '@/styles/tools/mixins' as mixins;
+<style lang="scss" scoped>
+@use '@/styles/tools/mixins' as mixins;
 
-  input {
-    @include mixins.inputStyle;
-  }
+input {
+  @include mixins.inputStyle;
+}
 
-  .signup-box {
-    @include mixins.formStyle;
+.signup-box {
+  @include mixins.formStyle;
 
-    &__button {
-      @include mixins.button;
+  &__button {
+    @include mixins.button;
 
-      &--primary {
-        @include mixins.buttonPrimary;
-      }
+    &--primary {
+      @include mixins.buttonPrimary;
     }
   }
+}
 </style>

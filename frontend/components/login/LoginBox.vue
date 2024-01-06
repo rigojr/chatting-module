@@ -1,31 +1,28 @@
 <script setup lang="ts">
+// TODO: check the verbatimModuleSyntax
+import { type LogInFormData } from '~/entities';
 
 /**
  * The component public properties.
  */
 export interface Props {
   title: string;
-  email: string;
-  password: string;
+  form: LogInFormData;
   emailPlaceholder?: string;
   passwordPlaceholder?: string;
   loginPlaceholder?: string;
   signUpPlaceholder?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   'emailPlaceholder': 'your@email.here',
   'passwordPlaceholder': 'Please enter your password',
   'loginPlaceholder': 'Log In',
   'signUpPlaceholder': 'Sign Up'
 });
 
-// TODO: Maybe there is a better way to reuse the Available Events and Events interface.
-
-type AvailableUpdateEvents = 'update:email' | 'update:password';
-
 interface Events {
-  (e: AvailableUpdateEvents, value: string): void;
+  (e: 'update:form', value: LogInFormData): void;
   (e: 'login'): void;
   (e: 'signup'): void;
 }
@@ -37,7 +34,7 @@ const emits = defineEmits<Events>();
  *
  * @param e The event.
  */
-function onInputChanged(e: Event, emitEvent: AvailableUpdateEvents): void {
+function onInputChanged(e: Event, key: keyof LogInFormData): void {
   const target = e.target;
 
   if (!isHTMLInputElement(target)) {
@@ -46,7 +43,7 @@ function onInputChanged(e: Event, emitEvent: AvailableUpdateEvents): void {
     return;
   }
 
-  emits(emitEvent, target.value);
+  emits('update:form', { ...toRaw(props.form), [key]: target.value });
 }
 
 /**
@@ -78,7 +75,7 @@ function onSignUp(): void {
       :placeholder="emailPlaceholder"
       required
       id="email"
-      @change="(e: Event) => onInputChanged(e, 'update:email')"
+      @change="(e: Event) => onInputChanged(e, 'email')"
     />
     <input
       class="login-box__password"
@@ -87,7 +84,7 @@ function onSignUp(): void {
       :placeholder="passwordPlaceholder"
       required
       id="password"
-      @change="(e: Event) => onInputChanged(e, 'update:password')"
+      @change="(e: Event) => onInputChanged(e, 'password')"
     />
     <div class="login-box__action-container">
       <input

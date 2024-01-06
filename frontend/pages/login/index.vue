@@ -1,41 +1,43 @@
 <script setup lang="ts">
-  const route = useRouter(); // TODO: should not be used here.
+import { type LogInFormData } from '~/entities';
 
-  /**
-   * Component private properties.
-   */
-  type State = {
-    title: string;
-    email: string;
-    password: string;
-  }
+const route = useRouter(); // TODO: should not be used here.
 
-  const state = reactive<State>({
-    'title': 'Welcome to my chatbox',
+/**
+ * Component private properties.
+ */
+type State = {
+  title: string;
+  formData: LogInFormData;
+}
+
+const state = reactive<State>({
+  'title': 'Welcome to my chatbox',
+  'formData': {
     'email': '',
     'password': ''
-  });
-
-  /**
-   * Occurs when the login has occurred.
-   */
-  function onLogin(): void {
-    console.log(state);
   }
+});
 
-  /**
-   * Occurs when the signup has occurred.
-   */
-  function onSignUp(): void {
-    route.push('/sign-up');
-  }
+/**
+ * Occurs when the login has occurred.
+ */
+function onLogin(): void {
+  console.log(state.formData);
+}
+
+/**
+ * Occurs when the signup has occurred.
+ */
+function onSignUp(): void {
+  route.push('/sign-up');
+}
 </script>
 
 <template>
   <LoginBox
     :title="state.title"
-    v-model:email="state.email"
-    v-model:password="state.password"
+    v-model:form="state.formData"
     @login="onLogin"
     @signup="onSignUp"
   />

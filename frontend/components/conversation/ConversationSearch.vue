@@ -64,7 +64,6 @@ function onSearchChanged(e: Event): void {
   margin: 0.5rem;
 
   &__input {
-    flex-grow: 1;
     margin-inline-start: 0.5rem;
 
     @include mixins.inputStyle;

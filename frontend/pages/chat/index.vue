@@ -19,7 +19,10 @@ const state = reactive<State>({
     </div>
     <div class="chat__divider"></div>
     <div class="chat__viewport">
-      <ConversationSearch v-model:search="state.search"/>
+      <div class="chat__viewport-header">
+        <ConversationUserProfileCard username="test"/>
+        <ConversationSearch v-model:search="state.search"/>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +42,12 @@ const state = reactive<State>({
   &__conversations, &__viewport {
     flex-grow: 1;
     margin: 0.5rem; // TODO: setting
+  }
+
+  &__viewport-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   &__divider {

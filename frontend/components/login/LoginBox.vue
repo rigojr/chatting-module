@@ -5,15 +5,19 @@
  */
 export interface Props {
   title: string;
-  emailPlaceholder?: string;
-  passwordPlaceholder?: string;
   email: string;
   password: string;
+  emailPlaceholder?: string;
+  passwordPlaceholder?: string;
+  loginPlaceholder?: string;
+  signUpPlaceholder?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   'emailPlaceholder': 'your@email.here',
-  'passwordPlaceholder': 'Please enter your password'
+  'passwordPlaceholder': 'Please enter your password',
+  'loginPlaceholder': 'Log In',
+  'signUpPlaceholder': 'Sign Up'
 });
 
 // TODO: Maybe there is a better way to reuse the Available Events and Events interface.
@@ -72,7 +76,10 @@ function onSignUp(): void {
 </script>
 
 <template>
-  <form class="login-box" @submit.prevent="onSubmit">
+  <form
+    class="login-box"
+    @submit.prevent="onSubmit"
+  >
     <h2>{{ title }}</h2>
     <input
       class="login-box__email"
@@ -96,12 +103,12 @@ function onSignUp(): void {
       <input
         class="login-box__button login-box__button--primary"
         type="submit"
-        value="Log In"
+        :value="loginPlaceholder"
       />
       <input
         class="login-box__button login-box__button--lead"
         type="button"
-        value="Sign Up"
+        :value="signUpPlaceholder"
         @click="onSignUp"
       />
     </div>

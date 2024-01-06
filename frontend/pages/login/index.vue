@@ -24,6 +24,7 @@ const state = reactive<State>({
  */
 function onLogin(): void {
   console.log(state.formData);
+  route.push('/chat');
 }
 
 /**

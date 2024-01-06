@@ -33,17 +33,6 @@ interface Events {
 const emits = defineEmits<Events>();
 
 /**
- * Indicates whether the value is HTMLInputElement or not.
- *
- * @param _value The unknown value.
- *
- * @return <t>true</t> if the given value is HTMLInputElement, otherwise <t>false</t>.
- */
-function isHTMLInputElement(_value: unknown): _value is HTMLInputElement {
-  return true; // TODO: add type checking.
-}
-
-/**
  * Occurs when an input has changed.
  *
  * @param e The event.

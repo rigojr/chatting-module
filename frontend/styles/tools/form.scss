@@ -15,4 +15,7 @@
 
 @mixin inputStyle { // TODO: should be an object
   padding: 0.5rem; //TODO: ITCSS
+
+  border: 0.1rem solid rgba(0,0,0,0.45); //TODO: setting.
+  border-radius: 0.5rem; //TODO: setting
 }

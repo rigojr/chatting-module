@@ -32,13 +32,18 @@ function onBack(): void {
 </script>
 
 <template>
-  <!-- TODO: Find a better approach to pass all v-models -->
-  <SignUpBox
-    v-model:form="state.formData"
-    @signup="onSignUp"
-    @back="onBack"
-  />
+  <div class="signup-container">
+    <SignUpBox
+      v-model:form="state.formData"
+      @signup="onSignUp"
+      @back="onBack"
+    />
+  </div>
 </template>
 
 <style lang="scss">
+.signup-container {
+  max-width: 50vw;
+  flex-grow: 1;
+}
 </style>

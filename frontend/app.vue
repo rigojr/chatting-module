@@ -5,9 +5,7 @@
 
 <template>
   <div class="viewport">
-    <div class="viewport__container">
-      <NuxtPage />
-    </div>
+    <NuxtPage />
   </div>
 </template>
 
@@ -19,10 +17,5 @@
     width: 90vw;
     height: 90vh;
     margin: auto;
-
-    &__container {
-      width: 100%;
-      max-width: 60%;
-    }
   }
 </style>

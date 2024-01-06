@@ -35,10 +35,19 @@ function onSignUp(): void {
 </script>
 
 <template>
-  <LoginBox
-    :title="state.title"
-    v-model:form="state.formData"
-    @login="onLogin"
-    @signup="onSignUp"
-  />
+  <div class="login-container">
+    <LoginBox
+      :title="state.title"
+      v-model:form="state.formData"
+      @login="onLogin"
+      @signup="onSignUp"
+    />
+  </div>
 </template>
+
+<style lang="scss">
+.login-container {
+  max-width: 40vw;
+  flex-grow: 1;
+}
+</style>

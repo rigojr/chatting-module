@@ -64,7 +64,7 @@ function onBackClicked(): void {
 }
 
 /**
- * TODO:
+ * Occurs when the form has been submitted.
  */
 function onSubmit(): void {
   emits('signup');

@@ -1,0 +1,13 @@
+@use '@/styles/settings/colors' as colors;
+
+@mixin button {
+  min-width: 5rem; // TODO: setting
+  padding: 0.5rem; // TODO: setting
+
+  border: none;
+}
+
+@mixin buttonPrimary {
+  color: white; // TODO: ITCSS
+  background-color: colors.$primary;
+}

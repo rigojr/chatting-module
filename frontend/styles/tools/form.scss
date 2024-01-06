@@ -1,0 +1,18 @@
+@use '@/styles/settings/colors' as colors;
+
+@mixin formStyle {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem; //TODO: setting
+  border: 0.15rem solid colors.$primary; // TODO: setting
+  border-radius: 1rem; //TODO: setting
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(0,0,0,0.25); // TODO: setting.
+
+  * { // TODO: should be an object
+    margin: 0.5rem 0.25rem; //TODO: ITCSS
+  }
+}
+
+@mixin inputStyle { // TODO: should be an object
+  padding: 0.5rem; //TODO: ITCSS
+}

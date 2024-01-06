@@ -152,36 +152,21 @@ function onSubmit(): void {
 </template>
 
 <style lang="scss">
-  @use '@/styles/settings/colors' as colors;
+  @use '@/styles/tools/mixins' as mixins;
 
   input {
-    padding: 0.25rem; //TODO: ITCSS
+    @include mixins.inputStyle;
   }
 
   .signup-box {
-    // TODO: could be an @apply DRY
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem; //TODO: ITCSS
-    border: 0.15rem solid colors.$primary; // TODO: could be added in ITCSS
-    border-radius: 1rem; //TODO: ITCSS
-    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0,0,0,0.25); // TODO: ITCSS.
+    @include mixins.formStyle;
 
     &__button {
-      min-width: 5rem;
-      padding: 0.5rem; //TODO: ITCSS
-
-      border: none;
+      @include mixins.button;
 
       &--primary {
-        color: white; // TODO: ITCSS
-        background-color: colors.$primary;
+        @include mixins.buttonPrimary;
       }
     }
-  }
-
-  * {
-    // TODO: DRY
-    margin: 0.5rem 0.25rem; //TODO: ITCSS
   }
 </style>

@@ -27,7 +27,7 @@ type AvailableUpdateEvents = 'update:email' | 'update:password';
 interface Events {
   (e: AvailableUpdateEvents, value: string): void;
   (e: 'login'): void;
-  (e: 'sign-up'): void;
+  (e: 'signup'): void;
 }
 
 const emits = defineEmits<Events>();
@@ -44,7 +44,7 @@ function isHTMLInputElement(_value: unknown): _value is HTMLInputElement {
 }
 
 /**
- * Occurs when the email has changed.
+ * Occurs when an input has changed.
  *
  * @param e The event.
  */
@@ -56,6 +56,7 @@ function onInputChanged(e: Event, emitEvent: AvailableUpdateEvents): void {
 
     return;
   }
+
   emits(emitEvent, target.value);
 }
 
@@ -70,7 +71,7 @@ function onSubmit(): void {
  * Occurs when the sign up option has been selected.
  */
 function onSignUp(): void {
-  emits('sign-up');
+  emits('signup');
 }
 
 </script>
@@ -136,7 +137,7 @@ function onSignUp(): void {
 
     &__button {
       width: 5rem;
-      padding: 0.5rem 0.25rem; //TODO: ITCSS
+      padding: 0.5rem; //TODO: ITCSS
 
       border: none;
 

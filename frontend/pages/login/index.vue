@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const route = useRouter(); // TODO: should not be used here.
+
   /**
    * Component private properties.
    */
@@ -25,7 +27,7 @@
    * Occurs when the signup has occurred.
    */
   function onSignUp(): void {
-    console.log(state.email, state.password);
+    route.push('/sign-up');
   }
 </script>
 
@@ -35,6 +37,6 @@
     v-model:email="state.email"
     v-model:password="state.password"
     @login="onLogin"
-    @sign-up="onSignUp"
+    @signup="onSignUp"
   />
 </template>

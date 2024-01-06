@@ -14,10 +14,16 @@
     'password': ''
   });
 
+  /**
+   * Occurs when the login has occurred.
+   */
   function onLogin(): void {
     console.log(state);
   }
 
+  /**
+   * Occurs when the signup has occurred.
+   */
   function onSignUp(): void {
     console.log(state.email, state.password);
   }

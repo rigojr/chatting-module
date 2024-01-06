@@ -47,8 +47,6 @@ function isHTMLInputElement(_value: unknown): _value is HTMLInputElement {
 function onInputChanged(e: Event, emitEvent: AvailableUpdateEvents): void {
   const target = e.target;
 
-  console.log(target);
-
   if (!isHTMLInputElement(target)) {
     // TODO: add error handling here.
 
@@ -116,7 +114,6 @@ function onSignUp(): void {
   .login-box {
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding: 0.5rem; //TODO: ITCSS
     border: 0.15rem solid colors.$primary; // TODO: could be added in ITCSS
     border-radius: 1rem; //TODO: ITCSS

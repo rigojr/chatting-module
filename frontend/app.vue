@@ -13,7 +13,11 @@
 
 <style lang="scss">
   .viewport {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 90vw;
+    height: 90vh;
     margin: auto;
 
     &__container {

@@ -16,11 +16,10 @@ const state = reactive<State>({
 <template>
   <div class="chat">
     <div class="chat__conversations">
-      <ConversationSearch v-model:search="state.search"/>
     </div>
     <div class="chat__divider"></div>
     <div class="chat__viewport">
-
+      <ConversationSearch v-model:search="state.search"/>
     </div>
   </div>
 </template>

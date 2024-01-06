@@ -1,11 +1,22 @@
 <script setup lang="ts">
 // TODO: using a middleware, we should check if the user can land here.
+
+/**
+ * Component private properties.
+ */
+type State = {
+  search: string;
+}
+
+const state = reactive<State>({
+  'search': ''
+});
 </script>
 
 <template>
   <div class="chat">
     <div class="chat__conversations">
-
+      <ConversationSearch v-model:search="state.search"/>
     </div>
     <div class="chat__divider"></div>
     <div class="chat__viewport">

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // TODO: using a middleware, we should check if the user can land here.
-import type { Message } from '~/entities';
 
-export type ConversationMessage = Message & { // TODO: maybe there is other place.
-  position: 'right' | 'left';
-}
+import type { Message, User } from '~/entities';
+import data from './fake-messages.json';
+const testMessages = data.messages as Message[]; // FIXME: For testing purpose.
+const testUser = data.messages[0].sender as User;
 
 /**
  * Component private properties.
@@ -36,6 +36,10 @@ function onMessageSent(): void {
         <ConversationUserProfileCard username="test"/>
         <ConversationSearch v-model:search="state.search"/>
       </div>
+        <ConversationMessageCollection
+          :messages="testMessages"
+          :user="testUser"
+        />
         <ConversationMessage
           v-model:message="state.message"
           @message-send="onMessageSent"
@@ -61,18 +65,23 @@ function onMessageSent(): void {
     margin: 0.5rem; // TODO: setting
   }
 
-  &__viewport-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   &__divider {
     height: 90%;
     align-self: center;
 
     border: 0.0625rem solid colors.$primary; // TODO: setting
     box-shadow: 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.25); // TODO: setting.
+  }
+
+  &__viewport {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__viewport-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 </style>

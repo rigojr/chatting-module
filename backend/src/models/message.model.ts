@@ -2,7 +2,7 @@ import { Document, model, Schema, SchemaTypes } from 'mongoose';
 import { UserDocument } from './user.model';
 
 /**
- * The available message status. FIXME: Dry
+ * FIXME: DRY
  */
 export enum MessageStatus {
   SENT = 'sent',

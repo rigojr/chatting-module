@@ -1,10 +1,10 @@
 import { Document, model, Model, Schema } from "mongoose";
 import { hash } from 'bcrypt';
 
-interface UserDocument extends Document {
+export interface UserDocument extends Document {
   name: string;
   email: string;
-  user: string;
+  username: string;
   password: string;
   profilePicture: Buffer;
 };
@@ -22,7 +22,7 @@ const userSchema = new Schema<UserDocument>({
     'lowercase': true,
     'unique': true // TODO: validator should be added here.
   },
-  'user': {
+  'username': {
     'type': String,
     'required': true,
     'trim': true,

@@ -6,11 +6,19 @@
  */
 type State = {
   search: string;
+  message: string;
 }
 
 const state = reactive<State>({
-  'search': ''
+  'search': '',
+  'message': ''
 });
+
+function onMessageSent(): void {
+  console.log(state);
+  state.message = '';
+  state.search = '';
+}
 </script>
 
 <template>
@@ -23,6 +31,10 @@ const state = reactive<State>({
         <ConversationUserProfileCard username="test"/>
         <ConversationSearch v-model:search="state.search"/>
       </div>
+        <ConversationMessage
+          v-model:message="state.message"
+          @message-send="onMessageSent"
+        />
     </div>
   </div>
 </template>

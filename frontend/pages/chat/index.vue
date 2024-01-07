@@ -1,5 +1,10 @@
 <script setup lang="ts">
 // TODO: using a middleware, we should check if the user can land here.
+import type { Message } from '~/entities';
+
+export type ConversationMessage = Message & { // TODO: maybe there is other place.
+  position: 'right' | 'left';
+}
 
 /**
  * Component private properties.

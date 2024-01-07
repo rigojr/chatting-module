@@ -1,0 +1,164 @@
+{
+  "messages": [
+    {
+      "id": "1",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 1",
+      "timestamp": 1610000001,
+      "status": "SENT"
+    },
+    {
+      "id": "2",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 2",
+      "timestamp": 1610000002,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "3",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 3",
+      "timestamp": 1610000003,
+      "status": "SENT"
+    },
+    {
+      "id": "4",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 4",
+      "timestamp": 1610000004,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "5",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 1",
+      "timestamp": 1610000005,
+      "status": "SENT"
+    },
+    {
+      "id": "6",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 2",
+      "timestamp": 1610000006,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "7",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 3",
+      "timestamp": 1610000007,
+      "status": "SENT"
+    },
+    {
+      "id": "8",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 4",
+      "timestamp": 1610000008,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "9",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 1",
+      "timestamp": 1610000009,
+      "status": "SENT"
+    },
+    {
+      "id": "10",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 2",
+      "timestamp": 1610000010,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "11",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 3",
+      "timestamp": 1610000011,
+      "status": "SENT"
+    },
+    {
+      "id": "12",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 4",
+      "timestamp": 1610000012,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "13",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 1",
+      "timestamp": 1610000013,
+      "status": "SENT"
+    },
+    {
+      "id": "14",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 2",
+      "timestamp": 1610000014,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "15",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 3",
+      "timestamp": 1610000015,
+      "status": "SENT"
+    },
+    {
+      "id": "16",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 4",
+      "timestamp": 1610000016,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "17",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 19",
+      "timestamp": 1610000017,
+      "status": "SENT"
+    },
+    {
+      "id": "18",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 4",
+      "timestamp": 1610000018,
+      "status": "RECEIVED"
+    },
+    {
+      "id": "19",
+      "sender": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "receiver": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "payload": "Message content 19",
+      "timestamp": 1610000019,
+      "status": "SENT"
+    },
+    {
+      "id": "20",
+      "sender": {"id": "2", "email": "user2@example.com", "user": "user2"},
+      "receiver": {"id": "1", "email": "user1@example.com", "user": "user1"},
+      "payload": "Message content 20",
+      "timestamp": 1610000020,
+      "status": "RECEIVED"
+    }
+  ]
+}

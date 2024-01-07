@@ -73,6 +73,7 @@ function onSignUp(): void {
       type="email"
       name="email"
       :placeholder="emailPlaceholder"
+      :value="form.email"
       required
       id="email"
       @change="(e: Event) => onInputChanged(e, 'email')"
@@ -82,6 +83,7 @@ function onSignUp(): void {
       type="password"
       name="password"
       :placeholder="passwordPlaceholder"
+      :value="form.password"
       required
       id="password"
       @change="(e: Event) => onInputChanged(e, 'password')"

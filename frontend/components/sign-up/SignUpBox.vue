@@ -81,6 +81,7 @@ function onSubmit(): void {
       type="text"
       name="full-name"
       :placeholder="fullNamePlaceholder"
+      :value="form.name"
       required
       id="full-name"
       @change="(e: Event) => onInputChanged(e, 'name')"
@@ -90,6 +91,7 @@ function onSubmit(): void {
       type="email"
       name="email"
       :placeholder="emailPlaceholder"
+      :value="form.email"
       required
       id="email"
       @change="(e: Event) => onInputChanged(e, 'email')"
@@ -99,6 +101,7 @@ function onSubmit(): void {
       type="text"
       name="user"
       :placeholder="userPlaceholder"
+      :value="form.user"
       required
       id="user"
       @change="(e: Event) => onInputChanged(e, 'user')"
@@ -108,6 +111,7 @@ function onSubmit(): void {
       type="password"
       name="password"
       :placeholder="passwordPlaceholder"
+      :value="form.password"
       required
       id="password"
       @change="(e: Event) => onInputChanged(e, 'password')"
@@ -117,6 +121,7 @@ function onSubmit(): void {
       type="password"
       name="password-repeated"
       :placeholder="passwordRepeatedPlaceholder"
+      :value="form.passwordRepeated"
       required
       id="password-repeated"
       @change="(e: Event) => onInputChanged(e, 'passwordRepeated')"

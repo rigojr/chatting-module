@@ -3,12 +3,24 @@
  * The component public properties.
  */
 interface Props {
-  imageSrc?: string;
+  image?: File;
   username: string;
 }
 
 const props = defineProps<Props>();
-const isProfileImageAvailable = computed(() => !isNullish(props.imageSrc));
+const isProfileImageAvailable = computed(() => !isNullish(props.image));
+
+/**
+ * Gets the image source from a given file.
+ *
+ * @param file The file.
+ *
+ * @returns The image source.
+ */
+function getImageSrc(file: File): string {
+  return URL.createObjectURL(file);
+}
+
 </script>
 
 <template>
@@ -17,7 +29,7 @@ const isProfileImageAvailable = computed(() => !isNullish(props.imageSrc));
       <img
         v-if="isProfileImageAvailable"
         class="user-profile-card__profile-image"
-        :src="imageSrc"
+        :src="getImageSrc(image)"
       />
       <Icon
         v-else
@@ -43,6 +55,10 @@ const isProfileImageAvailable = computed(() => !isNullish(props.imageSrc));
     margin-inline-end: 1rem;
 
     border-radius: 10rem;
+  }
+
+  &__username {
+    flex-grow: 1;
   }
 }
 </style>

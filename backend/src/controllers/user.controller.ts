@@ -1,13 +1,12 @@
-import { Request, Response } from 'express';
-import httpStatus from 'http-status';
+import bcrypt from 'bcrypt';
 
-import User, { UserDocument } from '../models/user.model'; // TODO: add path abbr.
+import User from '../models/user.model'; // TODO: add path abbr.
 import { isNullish } from '../utils/type-checking';
 
 /**
  * TODO: Check this later
  */
-type UserLoginRequest = {
+export type UserLoginRequest = {
   email: string;
   password: string;
 }
@@ -15,59 +14,13 @@ type UserLoginRequest = {
 /**
  * TODO:
  */
-type UserSingUpRequest = {
+export type UserSingUpRequest = {
   name: string;
   email: string;
   username: string;
   password: string;
-  passwordRepeated: string;
   profilePicture?: Buffer;
 };
-
-/**
- * Logs in an user.
- *
- * @param request  The request.
- * @param response The response.
- */
-export async function login(request: Request, response: Response): Promise<Response> {
-  const { email, password }: UserLoginRequest = request.body; // TODO: change.
-  const user = await User.findOne({ 'email': email });
-
-  if (isNullish(user)) {
-    return response
-      .status(httpStatus.BAD_REQUEST)
-      .send('The given credentials were invalid, try again.');
-  }
-
-  const isPasswordMatch = password === user.password; // TODO: add better validation.
-
-  if(!isPasswordMatch) {
-    return response
-      .status(httpStatus.BAD_REQUEST)
-      .send('The given credentials were invalid, try again.');
-  }
-
-  return response
-    .status(httpStatus.OK)
-    .send({ 'token': 'TODO:' });
-}
-
-export async function signUp(request: Request, response: Response): Promise<Response> {
-  const userRequest: UserSingUpRequest = request.body; // TODO: change.
-
-  if (await isUserSignUp(userRequest)) {
-    return response
-      .status(httpStatus.BAD_REQUEST)
-      .send('The email or username already in use.');
-  }
-
-  User.create(userRequest);
-
-  return response
-    .status(httpStatus.CREATED)
-    .send('The user has been created');
-}
 
 /**
  * Indicates whether the user exists or not.
@@ -83,4 +36,43 @@ async function isUserSignUp(userRequest: UserSingUpRequest): Promise<boolean> {
   });
 
   return !isNullish(user);
+}
+
+/**
+ * The user business logic.
+ */
+export class UserController {
+  /**
+   * Logs in an user.
+   *
+   * @param request  The request.
+   * @param response The response.
+   */
+  public async login(request: UserLoginRequest): Promise<void> { // TODO: explain why static
+    const user = await User.findOne({ 'email': request.email });
+
+    if (isNullish(user)) {
+      throw new Error('The given credentials were invalid, try again.');
+    }
+
+    const isPasswordMatch = await bcrypt.compare(request.password, user.password);
+
+    if(!isPasswordMatch) {
+      throw new Error('The given credentials were invalid, try again.');
+    }
+  }
+
+  /**
+   * Signs up an user.
+   *
+   * @param request  The request.
+   * @param response The response.
+   */
+  public async signUp(request: UserSingUpRequest): Promise<void> {
+    if (await isUserSignUp(request)) {
+      throw new Error('The email or username already in use.');
+    }
+
+    User.create(request);
+  }
 }

@@ -1,5 +1,5 @@
-import Conversation from '../../models/conversation.model';
-import User, { UserDocument } from '../../models/user.model';
+import Conversation, { ConversationDocument } from '../../models/conversation.model';
+import User from '../../models/user.model';
 import Message from '../../models/message.model';
 
 import { ConversationController, MessageConversationRequest, UserConversationRequest } from '../../controllers/conversation.controller';

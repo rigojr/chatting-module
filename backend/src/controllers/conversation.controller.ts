@@ -1,6 +1,6 @@
 import Message, { MessageDocument, MessageStatus } from "../models/message.model";
 import User, { UserDocument } from "../models/user.model";
-import Conversation, { ConversationDocument } from "../models/conversation.model";
+import Conversation, { ConversationDocument, ConversationStatus } from "../models/conversation.model";
 import { hasNullish, isEmpty, isNullish } from "../utils/type-checking";
 
 export type UserConversationRequest = {
@@ -15,6 +15,13 @@ export type MessageConversationRequest = {
 }
 
 export class ConversationController {
+
+  /**
+   * Creates a new conversation with the given users and messages.
+   *
+   * @param usersRequest    The conversation user request.
+   * @param messagesRequest The conversation message request.
+   */
   public async create(usersRequest: UserConversationRequest[], messagesRequest: MessageConversationRequest[]): Promise<void> {
     if (isEmpty(usersRequest) || isEmpty(messagesRequest)) {
       throw new Error('The users or messages given are empty.');
@@ -28,10 +35,21 @@ export class ConversationController {
 
     const messages = await Promise.all(messagesRequest.map((message) => this.createMessage(message)));
 
-    Conversation.create({ users, messages });
+    Conversation.create({
+      'users': users,
+      'messages': messages,
+      'status': ConversationStatus.PENDING
+    });
   }
 
-  public async getAll(userRequest: UserConversationRequest): Promise<ConversationDocument[]> {
+  /**
+   * Gets all the conversation related of the given user.
+   *
+   * @param userRequest The conversation user request.
+   *
+   * @returns A collection of conversation.
+   */
+  public async getAllByUser(userRequest: UserConversationRequest): Promise<ConversationDocument[]> {
     const user = await this.getUser(userRequest);
 
     if(isNullish(user)) {
@@ -39,6 +57,15 @@ export class ConversationController {
     }
 
     return Conversation.find({ 'users': { '$in': [user._id ]} })
+  }
+
+  /**
+   * Gets a conversation with the given id.
+   *
+   * @param id The conversation id.
+   */
+  public async get(id: string): Promise<ConversationDocument | null> { // FIXME:
+    return Conversation.findById(id).populate('users messages status');
   }
 
   /**

@@ -47,12 +47,11 @@ export class UserService {
     const user: UserSingUpRequest = request.body; // TODO: change.
 
     try {
-      console.log()
       await this.controller.signUp(user);
 
       return response
         .status(httpStatus.CREATED)
-        .send('The user has been created');
+        .send('The user has been created.');
     } catch (error: unknown) {
       // TODO: handle Error
 

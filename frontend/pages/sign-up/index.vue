@@ -40,6 +40,8 @@ function onSignUpCompleted(): void {
   state.isLoading = false;
   state.formData = getEmptyFormData();
   state.error = undefined;
+
+  route.push('/login');
 }
 
 function onSignUpFailed(message: string): void {
@@ -76,7 +78,10 @@ function onSignUp(): void {
     return;
   }
 
-  controller.signUp(getSignUpRequest());
+  controller.signUp(getSignUpRequest())
+    .catch(() => {
+      // TODO: handler error.
+    });
 }
 
 function onBack(): void {
@@ -86,7 +91,7 @@ function onBack(): void {
 onBeforeMount(() => {
   controller.on('signup-started', () => onSignUpStarted());
   controller.on('signup-completed', () => onSignUpCompleted());
-  controller.on('signup-failed', ([message]) => onSignUpFailed(message as string));
+  controller.on('signup-failed', ([message]) => onSignUpFailed(message as string)); // FIXME: fix this.
 });
 
 onBeforeUnmount(() => {

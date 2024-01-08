@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import userRouter from '../src/routes/user.router';
+import conversationRouter from '../src/routes/conversation.router';
 
 dotenv.config();
 
@@ -10,7 +11,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
-app.use(userRouter)
+app.use(userRouter);
+app.use(conversationRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World with TypeScript!');

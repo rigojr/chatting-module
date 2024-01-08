@@ -1,10 +1,14 @@
+import bcrypt from 'bcrypt';
+
 import User from '../../models/user.model';
 import { UserController, UserLoginRequest, UserSingUpRequest } from '../../controllers/user.controller';
 
 jest.mock('../../models/user.model');
+jest.mock('bcrypt');
 
 describe('user-controller', () => {
   const UserMocked = jest.mocked(User);
+  const bcryptMocked = jest.mocked(bcrypt);
 
   beforeEach(() => {
     jest.resetAllMocks();
@@ -17,9 +21,23 @@ describe('user-controller', () => {
       "password": "unsecuredpassword1"
     };
 
+    bcryptMocked.compare = jest.fn().mockImplementation(() => Promise.resolve(true));
     UserMocked.findOne.mockResolvedValue(user);
 
     await expect(controller.login(user)).resolves.toStrictEqual(undefined);
+  });
+
+  it('should throw an error when trying to login with bad credentials', async () => {
+    const controller = new UserController();
+    const user: UserLoginRequest = {
+      "email": "test@test.com",
+      "password": "unsecuredpassword1"
+    };
+
+    bcryptMocked.compare = jest.fn().mockImplementation(() => Promise.resolve(false));
+    UserMocked.findOne.mockResolvedValue(user);
+
+    await expect(controller.login(user)).rejects.toBeInstanceOf(Error);
   });
 
   it('should throw when trying to login a nonexisting user', async () => {

@@ -42,6 +42,8 @@ async function isUserSignUp(userRequest: UserSingUpRequest): Promise<boolean> {
  * The user business logic.
  */
 export class UserController {
+  // FIXME: function names could be agnostic from implementation.
+  // FIXME: add missing jsdoc of thrown errors.
   /**
    * Logs in an user.
    *

@@ -26,7 +26,6 @@ export class SignUpController extends Observable<Events> {
     this.emit('signup-started');
 
     try {
-      // FIXME: encrypt pass here.
       await axiosInstance.post('/signup', { ...user });
 
       this.emit('signup-completed');

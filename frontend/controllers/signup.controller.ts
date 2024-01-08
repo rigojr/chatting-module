@@ -42,7 +42,6 @@ export class SignUpController extends Observable<Events> {
 
       this.emit('signup-completed');
     } catch (error: unknown) {
-      console.log(error);
       // TODO: handle error.
       const message = 'Some error test message';
 

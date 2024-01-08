@@ -6,7 +6,6 @@ import axiosInstance from "~/services/axios";
 export type Events = {
   'signup-started': [];
   'signup-completed': [];
-  'signup-unsuccessfully-completed': [string];
   'signup-failed': [string];
 }
 
@@ -30,20 +29,13 @@ export class SignUpController extends Observable<Events> {
     this.emit('signup-started');
 
     try {
-      const response = await axiosInstance.post('/signup', { ...user });
-
-      if (response.status !== httpStatus.CREATED) {
-        const message = 'The user is already register';
-
-        this.emit('signup-unsuccessfully-completed', [ message ]);
-
-        return;
-      }
+      await axiosInstance.post('/signup', { ...user });
 
       this.emit('signup-completed');
     } catch (error: unknown) {
       // TODO: handle error.
-      const message = 'Some error test message';
+      // TODO: should handle status error to let user know more info.
+      const message = 'It seems the username/email is already in use';
 
       this.emit('signup-failed', [ message ]);
     }

@@ -36,12 +36,6 @@ function onSignUpStarted(): void {
   state.error = undefined;
 }
 
-function onSignUpUnsuccessfully(message: string): void {
-  state.isLoading = false;
-  state.formData = getEmptyFormData();
-  state.error = message;
-}
-
 function onSignUpCompleted(): void {
   state.isLoading = false;
   state.formData = getEmptyFormData();
@@ -92,7 +86,6 @@ function onBack(): void {
 onBeforeMount(() => {
   controller.on('signup-started', () => onSignUpStarted());
   controller.on('signup-completed', () => onSignUpCompleted());
-  controller.on('signup-unsuccessfully-completed', ([message]) => onSignUpUnsuccessfully(message as string)); // FIXME: as string should no be here, issues with the emitter generic type.
   controller.on('signup-failed', ([message]) => onSignUpFailed(message as string));
 });
 

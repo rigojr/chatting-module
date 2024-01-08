@@ -19,3 +19,10 @@ export function isHTMLInputElement(_value: unknown): _value is HTMLInputElement 
 export function isNullish(value: unknown): value is undefined | null {
   return value === undefined || value === null;
 }
+
+/**
+ * TODO: pending to add.
+ */
+export function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}

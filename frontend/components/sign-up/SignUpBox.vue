@@ -1,7 +1,15 @@
 <script setup lang="ts">
-// TODO: check the verbatimModuleSyntax
-import { type SingUpFormData } from '~/entities';
-
+/**
+ * The sign up form data.
+ */
+export type SingUpFormData = {
+  name: string;
+  email: string;
+  username: string;
+  password: string;
+  passwordRepeated: string;
+  profilePicture?: File;
+};
 /**
  * The component public properties.
  */
@@ -10,7 +18,7 @@ export interface Props {
   form: SingUpFormData
   fullNamePlaceholder?: string;
   emailPlaceholder?: string;
-  userPlaceholder?: string;
+  usernamePlaceholder?: string;
   passwordPlaceholder?: string;
   passwordRepeatedPlaceholder?: string;
   profilePicturePlaceholder?: string;
@@ -22,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   'title': 'Please enter the required information',
   'fullNamePlaceholder': 'Enter you full name',
   'emailPlaceholder': 'your@email.here',
-  'userPlaceholder': 'Enter your username',
+  'usernamePlaceholder': 'Enter your username',
   'passwordPlaceholder': 'Please enter your password',
   'passwordRepeatedPlaceholder': 'Please repeat your password',
   'profilePicturePlaceholder': 'Add your profile picture',
@@ -100,11 +108,11 @@ function onSubmit(): void {
       class="signup-box__user"
       type="text"
       name="user"
-      :placeholder="userPlaceholder"
-      :value="form.user"
+      :placeholder="usernamePlaceholder"
+      :value="form.username"
       required
       id="user"
-      @change="(e: Event) => onInputChanged(e, 'user')"
+      @change="(e: Event) => onInputChanged(e, 'username')"
     />
     <input
       class="signup-box__password"

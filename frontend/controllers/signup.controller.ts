@@ -1,5 +1,3 @@
-import httpStatus from "http-status";
-
 import { Observable } from "~/utils/patterns";
 import axiosInstance from "~/services/axios";
 

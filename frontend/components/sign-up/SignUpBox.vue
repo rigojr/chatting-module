@@ -15,6 +15,7 @@ export type SingUpFormData = {
  */
 export interface Props {
   title?: string;
+  error?: string;
   form: SingUpFormData
   fullNamePlaceholder?: string;
   emailPlaceholder?: string;
@@ -83,7 +84,8 @@ function onSubmit(): void {
     class="signup-box"
     @submit.prevent="onSubmit"
   >
-    <h2>{{ title }}</h2>
+    <h2 v-if="isNullish(error)">{{ title }}</h2>
+    <h2 v-else class="signup-box__error-title">{{ error }}</h2>
     <input
       class="signup-box__full-name"
       type="text"
@@ -118,6 +120,7 @@ function onSubmit(): void {
       class="signup-box__password"
       type="password"
       name="password"
+      minlength="8"
       :placeholder="passwordPlaceholder"
       :value="form.password"
       required
@@ -128,6 +131,7 @@ function onSubmit(): void {
       class="signup-box__password-repeated"
       type="password"
       name="password-repeated"
+      minlength="8"
       :placeholder="passwordRepeatedPlaceholder"
       :value="form.passwordRepeated"
       required
@@ -165,6 +169,7 @@ function onSubmit(): void {
 
 <style lang="scss" scoped>
 @use '@/styles/tools/mixins' as mixins;
+@use '@/styles/settings/colors' as colors;
 
 input {
   @include mixins.inputStyle;
@@ -172,6 +177,10 @@ input {
 
 .signup-box {
   @include mixins.formStyle;
+
+  &__error-title {
+    color: colors.$error;
+  }
 
   &__button {
     @include mixins.button;

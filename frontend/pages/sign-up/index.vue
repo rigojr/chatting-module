@@ -74,7 +74,7 @@ function getSignUpRequest(): UserSingUpRequest {
 
 function onSignUp(): void {
   if (!isPasswordValid()) {
-    state.error = 'Password doest not match';
+    state.error = 'Password doest not match, try again.';
 
     state.formData.password = '';
     state.formData.passwordRepeated = '';
@@ -104,7 +104,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="signup-container">
     <SignUpBox
-      :title="state.error"
+      :error="state.error"
       v-model:form="state.formData"
       @signup="onSignUp"
       @back="onBack"

@@ -1,12 +1,4 @@
 /**
- * The log in form data.
- */
-export type LogInFormData = {
-  email: string;
-  password: string;
-}
-
-/**
  * The user entity.
  */
 export type User = {

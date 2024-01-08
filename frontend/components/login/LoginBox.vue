@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import type { LogInFormData } from '~/controllers/login.controller';
+
 // TODO: check the verbatimModuleSyntax
-import { type LogInFormData } from '~/entities';
 
 /**
  * The component public properties.
  */
 export interface Props {
   title: string;
+  error?: string;
   form: LogInFormData;
   emailPlaceholder?: string;
   passwordPlaceholder?: string;
@@ -67,7 +69,8 @@ function onSignUp(): void {
     class="login-box"
     @submit.prevent="onSubmit"
   >
-    <h2>{{ title }}</h2>
+    <h2 v-if="isNullish(error)">{{ title }}</h2>
+    <h2 v-else class="login-box__error-title">{{ error }}</h2>
     <input
       class="login-box__email"
       type="email"
@@ -82,6 +85,7 @@ function onSignUp(): void {
       class="login-box__password"
       type="password"
       name="password"
+      minlength="8"
       :placeholder="passwordPlaceholder"
       :value="form.password"
       required
@@ -111,6 +115,9 @@ function onSignUp(): void {
   .login-box {
     @include mixins.formStyle;
 
+    &__error-title {
+      color: colors.$error;
+    }
     &__email, &__password {
       @include mixins.inputStyle;
     }

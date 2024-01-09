@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { LoginController, type LogInFormData } from '~/controllers/login.controller';
+import { LoginInteractor, type LogInFormData } from '~/interactors/login.interactor';
 
 const route = useRouter(); // TODO: should not be used here.
-const controller = new LoginController();
+const interactor = new LoginInteractor();
 
 /**
  * Component private properties.
@@ -32,7 +32,7 @@ function getEmptyFormData(): LogInFormData {
  * Occurs when the login has occurred.
  */
 function onLogin(): void {
-  controller.login({
+  interactor.login({
     'email': state.formData.email,
     'password': state.formData.password
   })
@@ -68,13 +68,13 @@ function onLoginFailed(message: string): void {
 }
 
 onBeforeMount(() => {
-  controller.on('login-started', () => onLoginStarted());
-  controller.on('login-completed', () => onLoginCompleted());
-  controller.on('login-failed', ([message]) => onLoginFailed(message as string));
+  interactor.on('login-started', () => onLoginStarted());
+  interactor.on('login-completed', () => onLoginCompleted());
+  interactor.on('login-failed', ([message]) => onLoginFailed(message as string));
 });
 
 onBeforeUnmount(() => {
-  controller.removeAll();
+  interactor.removeAll();
 });
 </script>
 
@@ -96,3 +96,4 @@ onBeforeUnmount(() => {
   flex-grow: 1;
 }
 </style>
+~/interactors/login.interactor

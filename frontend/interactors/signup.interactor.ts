@@ -17,7 +17,7 @@ export type UserSingUpRequest = {
   profilePicture?: Buffer;
 };
 
-export class SignUpController extends Observable<Events> {
+export class SignUpInteractor extends Observable<Events> {
   constructor () {
     super();
   }

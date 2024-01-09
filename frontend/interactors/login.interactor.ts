@@ -11,7 +11,7 @@ export type LogInFormData = {
   password: string;
 }
 
-export class LoginController extends Observable<Events> {
+export class LoginInteractor extends Observable<Events> {
   constructor () {
     super();
   }

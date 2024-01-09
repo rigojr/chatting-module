@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // TODO: check the verbatimModuleSyntax
 import type { SingUpFormData } from '~/components/sign-up/SignUpBox.vue';
-import { SignUpController, type UserSingUpRequest } from '~/controllers/signup.controller';
+import { SignUpInteractor, type UserSingUpRequest } from '~/interactors/signup.interactor';
 
 const route = useRouter(); // TODO: should not be used here.
-const controller = new SignUpController();
+const controller = new SignUpInteractor();
 
 /**
  * Component private properties.
@@ -115,4 +115,4 @@ onBeforeUnmount(() => {
   max-width: 50vw;
   flex-grow: 1;
 }
-</style>~/controllers/signup.controller
+</style>~/controllers/signup.controller~/interactors/signup.controller

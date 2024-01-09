@@ -41,6 +41,18 @@ function onUserSelected(user: User): void {
   console.log(user);
   state.userSelected = user;
 }
+
+/**
+ * TODO: pending to test.
+ */
+const messagesFiltered = computed(() => {
+  if (state.search === '') { // TODO: is empty.
+    return testMessages;
+  }
+
+  return Array.from(testMessages).filter((message) => message.payload.includes(state.search));
+});
+
 </script>
 
 <template>
